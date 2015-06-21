@@ -1,4 +1,7 @@
 package blog.main;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,6 +21,21 @@ public class User {
 	//Constructor: user is initialised with and "username"
 	
 	public User(String username) {
+		if(username.length()==0)
+		{
+			System.out.println("User name can not be blank,Please enter name in console");
+			 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			String input = null;
+			try {
+				input = br.readLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			username=input;
+			
+			
+		}
 		this.username = username;
 		this.userID = counter++;
 		System.out.println(username + " created with user ID= " + this.userID);
